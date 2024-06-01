@@ -1,0 +1,12 @@
+name: Triggered Workflow
+
+on:
+  repository_dispatch:
+    types: [trigger-uat-event]
+
+jobs:
+  triggered-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Dispatch Payload
+        run: echo "Triggered by a dispatch event with payload ${{ github.event.client_payload.description }}"
